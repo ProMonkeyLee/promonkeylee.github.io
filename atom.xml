@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://github.com/ProMonkeyLee/getgridea.github.io</id>
+    <id>https://promonkeylee.github.io</id>
     <title>糖果盒</title>
-    <updated>2022-02-07T03:55:38.821Z</updated>
+    <updated>2022-02-07T04:04:04.280Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://github.com/ProMonkeyLee/getgridea.github.io"/>
-    <link rel="self" href="https://github.com/ProMonkeyLee/getgridea.github.io/atom.xml"/>
+    <link rel="alternate" href="https://promonkeylee.github.io"/>
+    <link rel="self" href="https://promonkeylee.github.io/atom.xml"/>
     <subtitle>读书点亮生活</subtitle>
-    <logo>https://github.com/ProMonkeyLee/getgridea.github.io/images/avatar.png</logo>
-    <icon>https://github.com/ProMonkeyLee/getgridea.github.io/favicon.ico</icon>
+    <logo>https://promonkeylee.github.io/images/avatar.png</logo>
+    <icon>https://promonkeylee.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 糖果盒</rights>
     <entry>
         <title type="html"><![CDATA[事务传播行为]]></title>
-        <id>https://github.com/ProMonkeyLee/getgridea.github.io/post/shi-wu-chuan-bo-xing-wei/</id>
-        <link href="https://github.com/ProMonkeyLee/getgridea.github.io/post/shi-wu-chuan-bo-xing-wei/">
+        <id>https://promonkeylee.github.io/post/shi-wu-chuan-bo-xing-wei/</id>
+        <link href="https://promonkeylee.github.io/post/shi-wu-chuan-bo-xing-wei/">
         </link>
         <updated>2022-02-07T01:51:38.000Z</updated>
         <summary type="html"><![CDATA[<p>事务的第一个方面是传播行为（propagation behavior）。当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>事务的第一个方面是传播行为（propagation behavior）。当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</p>
 <!-- more -->
-<p><img src="https://github.com/ProMonkeyLee/getgridea.github.io/post-images/1644198765503.png" alt="" loading="lazy"><br>
-<img src="https://github.com/ProMonkeyLee/getgridea.github.io/post-images/1644199052542.png" alt="" loading="lazy"></p>
+<p><img src="https://promonkeylee.github.io/post-images/1644198765503.png" alt="" loading="lazy"><br>
+<img src="https://promonkeylee.github.io/post-images/1644199052542.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://github.com/ProMonkeyLee/getgridea.github.io/post/hello-gridea/</id>
-        <link href="https://github.com/ProMonkeyLee/getgridea.github.io/post/hello-gridea/">
+        <id>https://promonkeylee.github.io/post/hello-gridea/</id>
+        <link href="https://promonkeylee.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
