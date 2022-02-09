@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://promonkeylee.github.io</id>
     <title>糖果盒</title>
-    <updated>2022-02-08T11:13:38.312Z</updated>
+    <updated>2022-02-09T10:12:10.447Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://promonkeylee.github.io"/>
     <link rel="self" href="https://promonkeylee.github.io/atom.xml"/>
@@ -10,6 +10,106 @@
     <logo>https://promonkeylee.github.io/images/avatar.png</logo>
     <icon>https://promonkeylee.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 糖果盒</rights>
+    <entry>
+        <title type="html"><![CDATA[分布式理论]]></title>
+        <id>https://promonkeylee.github.io/post/fen-bu-shi-li-lun/</id>
+        <link href="https://promonkeylee.github.io/post/fen-bu-shi-li-lun/">
+        </link>
+        <updated>2022-02-09T09:58:25.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="什么是分布式系统">什么是分布式系统</h2>
+<p>分布式系统是一个硬件或软件组件分布在不同的网络计算机上，彼此之间仅仅通过消息传递进行通信和协调的系统。<br>
+通俗的理解，所谓分布式系统，就是一个业务拆分成多个子业务，分布在不同的服务器节点，共同构成的系统称为分布式系统，同一个分布式系统中的服务器节点在空间部署上是可以随意分布的，这些服务器可能放在不同的机柜中，也可能在不同的机房中，甚至分布在不同的城市。</p>
+<h2 id="分布式与集群的区别">分布式与集群的区别</h2>
+<ul>
+<li>集群: 多个服务器做同一个事情</li>
+<li>分布式: 多个服务器做不同的事情</li>
+</ul>
+<h2 id="分布式系统特性">分布式系统特性</h2>
+<ol>
+<li>分布性
+<ul>
+<li>空间中随机分布。这些计算机可以分布在不同的机房，不同的城市，甚至不同的国家。</li>
+</ul>
+</li>
+<li>对等性
+<ul>
+<li>分布式系统中的计算机没有主/从之分，组成分布式系统的所有节点都是对等的。</li>
+</ul>
+</li>
+<li>并发性
+<ul>
+<li>同一个分布式系统的多个节点，可能会并发地操作一些共享的资源，诸如数据库或分布式存储。</li>
+</ul>
+</li>
+<li>缺乏全局时钟
+<ul>
+<li>既然各个计算机之间是依赖于交换信息来进行相互通信，很难定义两件事件的先后顺序，缺乏全局始终控制序列</li>
+</ul>
+</li>
+<li>故障总会发生
+<ul>
+<li>组成分布式的计算机，都有可能在某一时刻突然间崩掉。分的计算机越多，可能崩掉一个的几率就越大。如果再考虑到设计程序时的异常故障，也会加大故障的概率。</li>
+</ul>
+</li>
+<li>处理单点故障
+<ul>
+<li>单点SPoF（Single Point of Failure）：某个角色或者功能只有某一台计算机在支撑，在这台计算机上出现的故障是单点故障</li>
+</ul>
+</li>
+</ol>
+<h2 id="分布式系统面临的问题">分布式系统面临的问题</h2>
+<ol>
+<li>通信异常</li>
+<li>网络分区</li>
+<li>节点故障</li>
+<li>三态(成功、失败和超时)</li>
+<li>重发</li>
+<li>幂等</li>
+</ol>
+<h2 id="数据一致性">数据一致性</h2>
+<ol>
+<li>强一致性</li>
+<li>弱一致性</li>
+<li>最终一致性
+<ul>
+<li>因果一致性</li>
+<li>读己之所写一致性</li>
+<li>会话一致性</li>
+<li>单调读一致性</li>
+<li>单调写一致性</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>一致性模型图</strong><br>
+<img src="https://promonkeylee.github.io/post-images/1644401031723.png" alt="" loading="lazy"></p>
+</blockquote>
+<h2 id="cap定理">CAP定理</h2>
+<p>CAP定理（CAP theorem），又被称作布鲁尔定理（Brewer's theorem），它指出对于一个分布式计算系统来说，不可能同时满足以下三点</p>
+<table>
+<thead>
+<tr>
+<th><strong>选项</strong></th>
+<th><strong>具体意义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一致性（Consistency）</td>
+<td>所有节点访问时都是同一份最新的数据副本</td>
+</tr>
+<tr>
+<td>可用性（Availability）</td>
+<td>每次请求都能获取到非错的响应，但是不保证获取的数据为最新数据</td>
+</tr>
+<tr>
+<td>分区容错性（Partitiontolerance）</td>
+<td>分布式系统在遇到任何网络分区故障的时候，仍然能够对外提供满足一致性和可用性的服务，除非整个网络环境都发生了故障</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RPC框架]]></title>
         <id>https://promonkeylee.github.io/post/rpc-kuang-jia/</id>
