@@ -1,22 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://promonkeylee.github.io</id>
-    <title>糖果盒</title>
-    <updated>2022-02-10T04:19:42.192Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://promonkeylee.github.io"/>
-    <link rel="self" href="https://promonkeylee.github.io/atom.xml"/>
-    <subtitle>读书点亮生活</subtitle>
-    <logo>https://promonkeylee.github.io/images/avatar.png</logo>
-    <icon>https://promonkeylee.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, 糖果盒</rights>
-    <entry>
-        <title type="html"><![CDATA[架构设计基本原则]]></title>
-        <id>https://promonkeylee.github.io/post/jia-gou-she-ji-ji-ben-yuan-ze/</id>
-        <link href="https://promonkeylee.github.io/post/jia-gou-she-ji-ji-ben-yuan-ze/">
-        </link>
-        <updated>2022-02-10T02:44:18.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1-开闭原则">1. 开闭原则</h2>
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>架构设计基本原则 | 糖果盒</title>
+
+<link rel="shortcut icon" href="https://promonkeylee.github.io/favicon.ico?v=1644466743385">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://promonkeylee.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            糖果盒
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1644466743385" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    架构设计基本原则
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-10 ·
+                    </time>
+                    
+                        <a href="https://promonkeylee.github.io/tag/h3PNlPBGo/" class="post-tags">
+                            # 技术钻研
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="1-开闭原则">1. 开闭原则</h2>
 <h3 id="11-开闭原则的定义">1.1 开闭原则的定义</h3>
 <p>开闭原则：软件实体应当对扩展开放，对修改关闭，这就是开闭原则的经典定义。</p>
 <p>这里的软件实体包括以下几个部分：</p>
@@ -278,165 +364,105 @@ public class LoDtest {
 <img src="https://promonkeylee.github.io/post-images/1644466708015.png" alt="" loading="lazy"><br>
   从上图 可以看出用继承关系实现会产生很多子类，而且增加新的“动力源”或者增加新的“颜色”都要修改源代码，这违背了开闭原则，显然不可取。但如果改用组合关系实现就能很好地解决以上问题<br>
 <img src="https://promonkeylee.github.io/post-images/1644466741386.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[分布式理论]]></title>
-        <id>https://promonkeylee.github.io/post/fen-bu-shi-li-lun/</id>
-        <link href="https://promonkeylee.github.io/post/fen-bu-shi-li-lun/">
-        </link>
-        <updated>2022-02-09T09:58:25.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="什么是分布式系统">什么是分布式系统</h2>
-<p>分布式系统是一个硬件或软件组件分布在不同的网络计算机上，彼此之间仅仅通过消息传递进行通信和协调的系统。<br>
-通俗的理解，所谓分布式系统，就是一个业务拆分成多个子业务，分布在不同的服务器节点，共同构成的系统称为分布式系统，同一个分布式系统中的服务器节点在空间部署上是可以随意分布的，这些服务器可能放在不同的机柜中，也可能在不同的机房中，甚至分布在不同的城市。</p>
-<h2 id="分布式与集群的区别">分布式与集群的区别</h2>
-<ul>
-<li>集群: 多个服务器做同一个事情</li>
-<li>分布式: 多个服务器做不同的事情</li>
-</ul>
-<h2 id="分布式系统特性">分布式系统特性</h2>
-<ol>
-<li>分布性
-<ul>
-<li>空间中随机分布。这些计算机可以分布在不同的机房，不同的城市，甚至不同的国家。</li>
-</ul>
-</li>
-<li>对等性
-<ul>
-<li>分布式系统中的计算机没有主/从之分，组成分布式系统的所有节点都是对等的。</li>
-</ul>
-</li>
-<li>并发性
-<ul>
-<li>同一个分布式系统的多个节点，可能会并发地操作一些共享的资源，诸如数据库或分布式存储。</li>
-</ul>
-</li>
-<li>缺乏全局时钟
-<ul>
-<li>既然各个计算机之间是依赖于交换信息来进行相互通信，很难定义两件事件的先后顺序，缺乏全局始终控制序列</li>
-</ul>
-</li>
-<li>故障总会发生
-<ul>
-<li>组成分布式的计算机，都有可能在某一时刻突然间崩掉。分的计算机越多，可能崩掉一个的几率就越大。如果再考虑到设计程序时的异常故障，也会加大故障的概率。</li>
-</ul>
-</li>
-<li>处理单点故障
-<ul>
-<li>单点SPoF（Single Point of Failure）：某个角色或者功能只有某一台计算机在支撑，在这台计算机上出现的故障是单点故障</li>
-</ul>
-</li>
-</ol>
-<h2 id="分布式系统面临的问题">分布式系统面临的问题</h2>
-<ol>
-<li>通信异常</li>
-<li>网络分区</li>
-<li>节点故障</li>
-<li>三态(成功、失败和超时)</li>
-<li>重发</li>
-<li>幂等</li>
-</ol>
-<h2 id="数据一致性">数据一致性</h2>
-<ol>
-<li>强一致性</li>
-<li>弱一致性</li>
-<li>最终一致性
-<ul>
-<li>因果一致性</li>
-<li>读己之所写一致性</li>
-<li>会话一致性</li>
-<li>单调读一致性</li>
-<li>单调写一致性</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p><strong>一致性模型图</strong><br>
-<img src="https://promonkeylee.github.io/post-images/1644401031723.png" alt="" loading="lazy"></p>
-</blockquote>
-<h2 id="cap定理">CAP定理</h2>
-<p>CAP定理（CAP theorem），又被称作布鲁尔定理（Brewer's theorem），它指出对于一个分布式计算系统来说，不可能同时满足以下三点</p>
-<table>
-<thead>
-<tr>
-<th><strong>选项</strong></th>
-<th><strong>具体意义</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>一致性（Consistency）</td>
-<td>所有节点访问时都是同一份最新的数据副本</td>
-</tr>
-<tr>
-<td>可用性（Availability）</td>
-<td>每次请求都能获取到非错的响应，但是不保证获取的数据为最新数据</td>
-</tr>
-<tr>
-<td>分区容错性（Partitiontolerance）</td>
-<td>分布式系统在遇到任何网络分区故障的时候，仍然能够对外提供满足一致性和可用性的服务，除非整个网络环境都发生了故障</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RPC框架]]></title>
-        <id>https://promonkeylee.github.io/post/rpc-kuang-jia/</id>
-        <link href="https://promonkeylee.github.io/post/rpc-kuang-jia/">
-        </link>
-        <updated>2022-02-08T10:53:35.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="分布式架构网络通信"><strong>分布式架构网络通信</strong></h2>
-<p>在分布式服务框架中，一个最基础的问题就是远程服务是怎么通讯的，在Java领域中有很多可实现远程通讯的技术，例如：RMI、Hessian、SOAP、ESB和JMS等，它们背后到底是基于什么原理实现的呢？</p>
-<h3 id="基本原理"><strong>基本原理</strong></h3>
-<p>要实现网络机器间的通讯，首先得来看看计算机系统网络通信的基本原理，在底层层面去看，网络通信需要做的就是将流从一台计算机传输到另外一台计算机，基于传输协议和网络IO来实现，其中传输协议比较出名的有tcp、udp等等，tcp、udp都是在基于Socket概念上为某类应用场景而扩展出的传输协议，网络IO，主要有bio、nio、aio三种方式，所有的分布式应用通讯都基于这个原理而实现</p>
-<h3 id="什么是rpc"><strong>什么是RPC</strong></h3>
-<p>RPC全称为remote procedure call，即远程过程调用。借助RPC可以做到像本地调用一样调用远程服<br>
-务，是一种进程间的通信方式.</p>
-<p>比如两台服务器A和B，A服务器上部署一个应用，B服务器上部署一个应用，A服务器上的应用想调用B服务器上的应用提供的方法，由于两个应用不在一个内存空间，不能直接调用，所以需要通过网络来表达调用的语义和传达调用的数据。<strong>需要注意的是RPC并不是一个具体的技术，而是指整个网络远程调用过程。</strong><br>
-<img src="https://promonkeylee.github.io/post-images/1644318052798.png" alt="" loading="lazy"></p>
-<h3 id="rpc架构"><strong>RPC架构</strong></h3>
-<p>一个完整的RPC架构里面包含了四个核心的组件，分别是Client，Client Stub，Server以及Server Stub，这个Stub可以理解为存根。</p>
-<blockquote>
-<ul>
-<li>客户端(Client)，服务的调用方。</li>
-<li>客户端存根(Client Stub)，存放服务端的地址消息，再将客户端的请求参数打包成网络消息，然后通过网络远程发送给服务方。</li>
-<li>服务端(Server)，真正的服务提供者。</li>
-<li>服务端存根(Server Stub)，接收客户端发送过来的消息，将消息解包，并调用本地的方法。</li>
-</ul>
-</blockquote>
-<figure data-type="image" tabindex="1"><img src="https://promonkeylee.github.io/post-images/1644318278407.png" alt="" loading="lazy"></figure>
-<ol>
-<li>客户端（client）以本地调用方式（即以接口的方式）调用服务；</li>
-<li>客户端存根（client stub）接收到调用后，负责将方法、参数等组装成能够进行网络传输的消息体（将消息体对象序列化为二进制）；</li>
-<li>客户端通过socket将消息发送到服务端；</li>
-<li>服务端存根( server stub）收到消息后进行解码（将消息对象反序列化）；</li>
-<li>服务端存根( server stub）根据解码结果调用本地的服务；</li>
-<li>服务处理</li>
-<li>本地服务执行并将结果返回给服务端存根( server stub）；</li>
-<li>服务端存根( server stub）将返回结果打包成消息（将结果消息对象序列化）；</li>
-<li>服务端（server）通过socket将消息发送到客户端；</li>
-<li>客户端存根（client stub）接收到结果消息，并进行解码（将结果消息发序列化）；</li>
-<li>客户端（client）得到最终结果。</li>
-</ol>
-<p>RPC的目标是要把2、3、4、5、7、8、9、10这些步骤都封装起来。只剩下1、6、11</p>
-<blockquote>
-<p>注意：无论是何种类型的数据，最终都需要转换成二进制流在网络上进行传输，数据的发送方需要将对象转换为二进制流，而数据的接收方则需要把二进制流再恢复为对象。</p>
-</blockquote>
-<p>在java中RPC框架比较多，常见的有Hessian、gRPC、Dubbo 等，其实对 于RPC框架而言，核心模块就是<strong>通讯和序列化</strong></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[事务传播行为]]></title>
-        <id>https://promonkeylee.github.io/post/shi-wu-chuan-bo-xing-wei/</id>
-        <link href="https://promonkeylee.github.io/post/shi-wu-chuan-bo-xing-wei/">
-        </link>
-        <updated>2022-02-07T01:51:38.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>事务的第一个方面是传播行为（propagation behavior）。当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</p>
-</blockquote>
-<p><img src="https://promonkeylee.github.io/post-images/1644198765503.png" alt="" loading="lazy"><br>
-<img src="https://promonkeylee.github.io/post-images/1644199052542.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-</feed>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://promonkeylee.github.io/post/fen-bu-shi-li-lun/" class="post-title gt-a-link">
+                    分布式理论
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '0dff8f95705422b9dc6f',
+    clientSecret: 'ce757cb3d3f466e5203c9ac9a9a68a694902837c',
+    repo: 'promonkeylee.github.io',
+    owner: 'ProMonkeyLee',
+    admin: ['ProMonkeyLee'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">读书点亮生活</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">一个努力进步的小朋友</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://promonkeylee.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
