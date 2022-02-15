@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://promonkeylee.github.io</id>
     <title>糖果盒</title>
-    <updated>2022-02-12T02:59:58.263Z</updated>
+    <updated>2022-02-15T07:00:56.483Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://promonkeylee.github.io"/>
     <link rel="self" href="https://promonkeylee.github.io/atom.xml"/>
@@ -10,6 +10,78 @@
     <logo>https://promonkeylee.github.io/images/avatar.png</logo>
     <icon>https://promonkeylee.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 糖果盒</rights>
+    <entry>
+        <title type="html"><![CDATA[Dubbo配置项说明]]></title>
+        <id>https://promonkeylee.github.io/post/dubbo-pei-zhi-xiang-shuo-ming/</id>
+        <link href="https://promonkeylee.github.io/post/dubbo-pei-zhi-xiang-shuo-ming/">
+        </link>
+        <updated>2022-02-15T06:54:42.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1dubboapplication">1.dubbo:application</h2>
+<p>对应 org.apache.dubbo.config.ApplicationConfig, 代表当前应用的信息</p>
+<ol>
+<li>name: 当前应用程序的名称，在dubbo-admin中我们也可以看到，这个代表这个应用名称。我们在真正时是时也会根据这个参数来进行聚合应用请求。</li>
+<li>owner: 当前应用程序的负责人，可以通过这个负责人找到其相关的应用列表，用于快速定位到责任人。</li>
+<li>qosEnable : 是否启动QoS 默认true</li>
+<li>qosPort : 启动QoS绑定的端口 默认22222</li>
+<li>qosAcceptForeignIp: 是否允许远程访问 默认是false</li>
+</ol>
+<h2 id="2dubboregistry">2.dubbo:registry</h2>
+<p>org.apache.dubbo.config.RegistryConfig, 代表该模块所使用的注册中心。一个模块中的服务可以将其注册到多个注册中心上，也可以注册到一个上。后面再service和reference也会引入这个注册中心。</p>
+<ol>
+<li>id : 当当前服务中provider或者consumer中存在多个注册中心时，则使用需要增加该配置。在一些公司，会通过业务线的不同选择不同的注册中心，所以一般都会配置该值。</li>
+<li>address : 当前注册中心的访问地址。</li>
+<li>protocol : 当前注册中心所使用的协议是什么。也可以直接在 address 中写入，比如使用zookeeper，就可以写成 zookeeper://xx.xx.xx.xx:2181</li>
+<li>timeout : 当与注册中心不再同一个机房时，大多会把该参数延长。</li>
+</ol>
+<h2 id="3dubboprotocol">3.dubbo:protocol</h2>
+<p>org.apache.dubbo.config.ProtocolConfig, 指定服务在进行数据传输所使用的协议。</p>
+<ol>
+<li>id : 在大公司，可能因为各个部门技术栈不同，所以可能会选择使用不同的协议进行交互。这里在多个协议使用时，需要指定。</li>
+<li>name : 指定协议名称。默认使用 dubbo 。</li>
+</ol>
+<h2 id="4-dubboservice">4. dubbo:service</h2>
+<p>org.apache.dubbo.config.ServiceConfig, 用于指定当前需要对外暴露的服务信息，后面也会具体讲解。和 dubbo:reference 大致相同。</p>
+<ol>
+<li>interface : 指定当前需要进行对外暴露的接口是什么。</li>
+<li>ref : 具体实现对象的引用，一般我们在生产级别都是使用Spring去进行Bean托管的，所以这里面一般也指的是Spring中的BeanId。</li>
+<li>version : 对外暴露的版本号。不同的版本号，消费者在消费的时候只会根据固定的版本号进行消费。</li>
+</ol>
+<h2 id="5dubboreference">5.dubbo:reference</h2>
+<p>org.apache.dubbo.config.ReferenceConfig, 消费者的配置，这里只做简单说明，后面会具体讲解。</p>
+<ol>
+<li>id : 指定该Bean在注册到Spring中的id。</li>
+<li>interface: 服务接口名</li>
+<li>version : 指定当前服务版本，与服务提供者的版本一致。</li>
+<li>registry : 指定所具体使用的注册中心地址。这里面也就是使用上面在 dubbo:registry 中所声明的id。</li>
+</ol>
+<h2 id="6dubbomethod">6.dubbo:method</h2>
+<p>org.apache.dubbo.config.MethodConfig, 用于在制定的 dubbo:service 或者dubbo:reference 中的更具体一个层级，指定具体方法级别在进行RPC操作时候的配置，可以理解为对这上面层级中的配置针对于具体方法的特殊处理。</p>
+<ol>
+<li>name : 指定方法名称，用于对这个方法名称的RPC调用进行特殊配置。</li>
+<li>async: 是否异步 默认false</li>
+</ol>
+<h2 id="7dubboservice和dubboreference详解">7.dubbo:service和dubbo:reference详解</h2>
+<p>这两个在dubbo中是我们最为常用的部分，其中有一些我们必然会接触到的属性。并且这里会讲到一些设置上的使用方案。</p>
+<ol>
+<li>mock: 用于在方法调用出现错误时，当做服务降级来统一对外返回结果，后面我们也会对这个方法做更多的介绍。</li>
+<li>timeout: 用于指定当前方法或者接口中所有方法的超时时间。我们一般都会根据提供者的时长来具体规定。比如我们在进行第三方服务依赖时可能会对接口的时长做放宽，防止第三方服务不稳定导致服务受损。</li>
+<li>check: 用于在启动时，检查生产者是否有该服务。我们一般都会将这个值设置为false，不让其进行检查。因为如果出现模块之间循环引用的话，那么则可能会出现相互依赖，都进行check的话，那么这两个服务永远也启动不起来。</li>
+<li>retries: 用于指定当前服务在执行时出现错误或者超时时的重试机制。
+<ol>
+<li>注意提供者是否有幂等，否则可能出现数据一致性问题</li>
+<li>注意提供者是否有类似缓存机制，如出现大面积错误时，可能因为不停重试导致雪崩</li>
+</ol>
+</li>
+<li>executes: 用于在提供者做配置，来确保最大的并行度。
+<ol>
+<li>可能导致集群功能无法充分利用或者堵塞</li>
+<li>但是也可以启动部分对应用的保护功能</li>
+<li>可以不做配置，结合后面的熔断限流使用</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Zookeeper服务启动]]></title>
         <id>https://promonkeylee.github.io/post/zookeeper-fu-wu-qi-dong/</id>
