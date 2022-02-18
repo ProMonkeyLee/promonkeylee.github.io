@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://promonkeylee.github.io</id>
     <title>糖果盒</title>
-    <updated>2022-02-15T08:13:25.846Z</updated>
+    <updated>2022-02-18T01:18:57.866Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://promonkeylee.github.io"/>
     <link rel="self" href="https://promonkeylee.github.io/atom.xml"/>
@@ -10,6 +10,67 @@
     <logo>https://promonkeylee.github.io/images/avatar.png</logo>
     <icon>https://promonkeylee.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 糖果盒</rights>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot 热插拔技术]]></title>
+        <id>https://promonkeylee.github.io/post/springboot-re-cha-ba-ji-zhu/</id>
+        <link href="https://promonkeylee.github.io/post/springboot-re-cha-ba-ji-zhu/">
+        </link>
+        <updated>2022-02-18T01:10:06.000Z</updated>
+        <content type="html"><![CDATA[<p>还记得我们经常会在启动类Application上面加@EnableXXX注解吗？<br>
+其实这个@Enablexxx注解就是一种热拔插技术，加了这个注解就可以启动对应的starter，当不需要对应的starter的时候只需要把这个注解注释掉就行，是不是很优雅呢？那么这是如何实现的呢？</p>
+<ol>
+<li>新增标记类ConfigMarker<pre><code>public class ConfigMarker {
+
+}
+</code></pre>
+</li>
+<li>新增EnableRegisterServer注解<pre><code>@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Import({ConfigMarker.class})
+public @interface EnableRegisterServer {
+
+}
+</code></pre>
+</li>
+<li>改造 MyAutoConfiguration 新增条件注解 @ConditionalOnBean(ConfigMarker.class) ，@ConditionalOnBean 这个是条件注解，前面的意思代表只有当期上下文中含有 ConfigMarker对象，被标注的类才会被实例化。<pre><code>@Configuration
+@ConditionalOnBean(ConfigMarker.class)
+public class MyAutoConfiguration {
+    static {
+        System.out.println(&quot;MyAutoConfiguration init....&quot;);
+    } 
+    @Bean
+    public SimpleBean simpleBean(){ 
+        return new SimpleBean();
+    }
+}
+</code></pre>
+</li>
+<li>改造service工程<br>
+在启动类上新增@EnableImRegisterServer注解<br>
+<img src="https://promonkeylee.github.io/post-images/1645146995575.png" alt="" loading="lazy"><br>
+到此热插拔就实现好了，当你加了 @EnableImRegisterServer 的时候启动zdy工程就会自动装配<br>
+SimpleBean，反之则不装配。<br>
+原理也很简单，当加了 @EnableImRegisterServer 注解的时候，由于这个注解使用了<br>
+@Import({ConfigMarker.class}) ，所以会导致Spring去加载 ConfigMarker 到上下文中，而又因为条件注解 @ConditionalOnBean(ConfigMarker.class) 的存在，所以MyAutoConfiguration 类就会被实例化。</li>
+</ol>
+<h3 id="关于条件注解的讲解"><strong>关于条件注解的讲解</strong></h3>
+<ul>
+<li>@ConditionalOnBean：仅仅在当前上下文中存在某个对象时，才会实例化一个Bean。</li>
+<li>@ConditionalOnClass：某个class位于类路径上，才会实例化一个Bean。</li>
+<li>@ConditionalOnExpression：当表达式为true的时候，才会实例化一个Bean。基于SpEL表达式的条件判断。</li>
+<li>@ConditionalOnMissingBean：仅仅在当前上下文中不存在某个对象时，才会实例化一个Bean。</li>
+<li>@ConditionalOnMissingClass：某个class类路径上不存在的时候，才会实例化一个Bean。</li>
+<li>@ConditionalOnNotWebApplication：不是web应用，才会实例化一个Bean。</li>
+<li>@ConditionalOnWebApplication：当项目是一个Web项目时进行实例化。</li>
+<li>@ConditionalOnNotWebApplication：当项目不是一个Web项目时进行实例化。</li>
+<li>@ConditionalOnProperty：当指定的属性有指定的值时进行实例化。</li>
+<li>@ConditionalOnJava：当JVM版本为指定的版本范围时触发实例化。</li>
+<li>@ConditionalOnResource：当类路径下有指定的资源时触发实例化。</li>
+<li>@ConditionalOnJndi：在JNDI存在的条件下触发实例化。</li>
+<li>@ConditionalOnSingleCandidate：当指定的Bean在容器中只有一个，或者有多个但是指定了首选的Bean时触发实例化。</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Dubbo配置项说明]]></title>
         <id>https://promonkeylee.github.io/post/dubbo-pei-zhi-xiang-shuo-ming/</id>

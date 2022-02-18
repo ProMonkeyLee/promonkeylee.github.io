@@ -1,11 +1,10 @@
 <html>
-
 <head>
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>友情链接 - 糖果盒</title>
+<title>SpringBoot 热插拔技术 | 糖果盒</title>
 
 <link rel="shortcut icon" href="https://promonkeylee.github.io/favicon.ico?v=1645147133771">
 
@@ -26,12 +25,11 @@
 
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
-
 <body>
 <div class="main gt-bg-theme-color-first">
-        <div class="main-content">
-            <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -87,25 +85,95 @@
     </div>
 </nav>
 
-            <div class="post-container">
-                <div class="post-detail">
-                    <article>
-                        <!-- <div class="post-content-wrapper"> -->
-                            <div class="post-content">
-                                <div class="friends-desc">
-                                    
-                                </div>
-                                <h3 id="linklist">友链列表</h3>
-                                
-                                    
-                                
-                            </div>
-                        <!-- </div> -->
-                    </article>
-                </div>
-                
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    SpringBoot 热插拔技术
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-02-18 ·
+                    </time>
                     
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+                        <a href="https://promonkeylee.github.io/tag/h3PNlPBGo/" class="post-tags">
+                            # 技术钻研
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>还记得我们经常会在启动类Application上面加@EnableXXX注解吗？<br>
+其实这个@Enablexxx注解就是一种热拔插技术，加了这个注解就可以启动对应的starter，当不需要对应的starter的时候只需要把这个注解注释掉就行，是不是很优雅呢？那么这是如何实现的呢？</p>
+<ol>
+<li>新增标记类ConfigMarker<pre><code>public class ConfigMarker {
+
+}
+</code></pre>
+</li>
+<li>新增EnableRegisterServer注解<pre><code>@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Import({ConfigMarker.class})
+public @interface EnableRegisterServer {
+
+}
+</code></pre>
+</li>
+<li>改造 MyAutoConfiguration 新增条件注解 @ConditionalOnBean(ConfigMarker.class) ，@ConditionalOnBean 这个是条件注解，前面的意思代表只有当期上下文中含有 ConfigMarker对象，被标注的类才会被实例化。<pre><code>@Configuration
+@ConditionalOnBean(ConfigMarker.class)
+public class MyAutoConfiguration {
+    static {
+        System.out.println(&quot;MyAutoConfiguration init....&quot;);
+    } 
+    @Bean
+    public SimpleBean simpleBean(){ 
+        return new SimpleBean();
+    }
+}
+</code></pre>
+</li>
+<li>改造service工程<br>
+在启动类上新增@EnableImRegisterServer注解<br>
+<img src="https://promonkeylee.github.io/post-images/1645146995575.png" alt="" loading="lazy"><br>
+到此热插拔就实现好了，当你加了 @EnableImRegisterServer 的时候启动zdy工程就会自动装配<br>
+SimpleBean，反之则不装配。<br>
+原理也很简单，当加了 @EnableImRegisterServer 注解的时候，由于这个注解使用了<br>
+@Import({ConfigMarker.class}) ，所以会导致Spring去加载 ConfigMarker 到上下文中，而又因为条件注解 @ConditionalOnBean(ConfigMarker.class) 的存在，所以MyAutoConfiguration 类就会被实例化。</li>
+</ol>
+<h3 id="关于条件注解的讲解"><strong>关于条件注解的讲解</strong></h3>
+<ul>
+<li>@ConditionalOnBean：仅仅在当前上下文中存在某个对象时，才会实例化一个Bean。</li>
+<li>@ConditionalOnClass：某个class位于类路径上，才会实例化一个Bean。</li>
+<li>@ConditionalOnExpression：当表达式为true的时候，才会实例化一个Bean。基于SpEL表达式的条件判断。</li>
+<li>@ConditionalOnMissingBean：仅仅在当前上下文中不存在某个对象时，才会实例化一个Bean。</li>
+<li>@ConditionalOnMissingClass：某个class类路径上不存在的时候，才会实例化一个Bean。</li>
+<li>@ConditionalOnNotWebApplication：不是web应用，才会实例化一个Bean。</li>
+<li>@ConditionalOnWebApplication：当项目是一个Web项目时进行实例化。</li>
+<li>@ConditionalOnNotWebApplication：当项目不是一个Web项目时进行实例化。</li>
+<li>@ConditionalOnProperty：当指定的属性有指定的值时进行实例化。</li>
+<li>@ConditionalOnJava：当JVM版本为指定的版本范围时触发实例化。</li>
+<li>@ConditionalOnResource：当类路径下有指定的资源时触发实例化。</li>
+<li>@ConditionalOnJndi：在JNDI存在的条件下触发实例化。</li>
+<li>@ConditionalOnSingleCandidate：当指定的Bean在容器中只有一个，或者有多个但是指定了首选的Bean时触发实例化。</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://promonkeylee.github.io/post/dubbo-pei-zhi-xiang-shuo-ming/" class="post-title gt-a-link">
+                    Dubbo配置项说明
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 <script>
     // md5.min.js
@@ -148,15 +216,14 @@
 
 </script>
 
-                    
+            
 
-                    
-                
-            </div>
+            
+        
 
+        
 
-
-            <div class="site-footer gt-c-content-color-first">
+        <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">读书点亮生活</div>
     <div class="social-container">
         
@@ -186,8 +253,7 @@
   hljs.initHighlightingOnLoad()
 </script>
 
-        </div>
     </div>
+</div>
 </body>
-
 </html>
